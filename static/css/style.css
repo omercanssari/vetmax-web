@@ -1005,3 +1005,54 @@ footer {
         height: 250px;
     }
 }
+
+/* --- MOBİL İÇİN EVRENSEL AYARLAR --- */
+@media (max-width: 768px) {
+    /* 1. Tüm container yapılarını mobilde genişlet */
+    .nav-container, .hero-content, .about-container,
+    .services-container, .treatments-container, .contact-container {
+        width: 95% !important;
+        margin: 0 auto;
+    }
+
+    /* 2. Menü (Navbar) Düzeni */
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 10px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* 3. Hero (Giriş) Başlığı */
+    .hero h1 {
+        font-size: 28px !important;
+        line-height: 1.2;
+    }
+
+    /* 4. Tedavi ve Hizmet Kartları (En çok kayan yer burası) */
+    .treatment-row, .services-grid, .about-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Görsellerin taşmasını engelle */
+    .treatment-visual, .about-image {
+        width: 100% !important;
+        height: 250px !important;
+        object-fit: cover;
+    }
+
+    /* 5. Butonları mobilde tam genişlik yap (Daha rahat tıklanır) */
+    .btn, .nav-cta {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0 !important;
+    }
+}
