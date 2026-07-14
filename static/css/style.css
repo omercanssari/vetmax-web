@@ -1005,47 +1005,4 @@ footer {
         height: 250px;
     }
 }
-/* --- MOBİL İÇİN KESİN DÜZELTME --- */
-@media screen and (max-width: 768px) {
-    /* 1. Sayfa genişliğini kilitle (Taşmayı engeller) */
-    body {
-        overflow-x: hidden;
-        width: 100vw;
-    }
 
-    /* 2. Navigasyon (Menü) */
-    .nav-container {
-        flex-direction: column !important;
-        padding: 10px !important;
-    }
-
-    .nav-links {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 5px !important;
-        margin-top: 10px;
-    }
-
-    .nav-links a {
-        font-size: 10px !important; /* Yazıları küçültüyoruz */
-        padding: 5px !important;
-    }
-
-    /* 3. Acil Arama Butonu */
-    .nav-cta {
-        width: 90% !important;
-        margin: 10px auto !important;
-    }
-
-    /* 4. İçerik ve Resim Taşmaları */
-    .hero-content, .about-container {
-        padding: 0 15px !important;
-    }
-
-    /* Görselin (kedi/köpek) ekran dışına çıkmasını engeller */
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-}
