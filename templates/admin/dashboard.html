@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet-Max Admin Paneli</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; margin: 0; padding: 0; }
+        .sidebar { width: 250px; background: #2c3e50; position: fixed; height: 100%; color: white; padding-top: 20px; }
+        .sidebar h2 { text-align: center; font-size: 20px; margin-bottom: 30px; color: #1abc9c; }
+        .sidebar a { display: block; color: #bdc3c7; padding: 15px; text-decoration: none; transition: 0.3s; }
+        .sidebar a:hover { background: #34495e; color: white; }
+        .main-content { margin-left: 260px; padding: 30px; }
+        .header { display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-control { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        .btn { background: #1abc9c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-danger { background: #e74c3c; padding: 6px 12px; border-radius: 4px; text-decoration: none; color: white; font-size: 13px; }
+        .data-list { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .data-list th, .data-list td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        .data-list th { background: #f8f9fa; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Vet-Max Admin</h2>
+        <a href="/admin/dashboard"><i class="fa-solid fa-gauge"></i> Kontrol Paneli</a>
+        <a href="/" target="_blank"><i class="fa-solid fa-globe"></i> Siteyi Görüntüle</a>
+        <a href="/admin/logout" style="color: #e74c3c;"><i class="fa-solid fa-right-from-bracket"></i> Çıkış Yap</a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Yönetim Paneli</h1>
+            <span>Hoş geldiniz, <strong>{{ session['admin_username'] }}</strong></span>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div style="padding: 12px; margin: 15px 0; background: #d4edda; color: #155724; border-radius: 6px;">
+                  {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div class="card">
+            <h2><i class="fa-solid fa-hands-holding-child"></i> Hizmetler Yönetimi</h2>
+            <form action="/admin/service/add" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Hizmet Adı</label>
+                    <input type="text" name="title" class="form-control" placeholder="Örn: Pet Kuaför & Bakım" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>FontAwesome İkonu (Resim yoksa aktiftir)</label>
+                        <input type="text" name="icon" class="form-control" value="fa-stethoscope">
+                    </div>
+                    <div class="form-group">
+                        <label>Hizmet Görseli (İsteğe Bağlı)</label>
+                        <input type="file" name="image" accept="image/*" class="form-control" style="padding: 6px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Hizmet Açıklaması</label>
+                    <textarea name="description" class="form-control" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn"><i class="fa-solid fa-plus"></i> Hizmet Ekle</button>
+            </form>
+
+            <table class="data-list">
+                <thead>
+                    <tr>
+                        <th>Görsel/İkon</th>
+                        <th>Hizmet Adı</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                    <tr>
+                        <td>
+                            {% if service.image %}
+                                <span style="color: green;"><i class="fa-solid fa-image"></i> Görsel Yüklü</span>
+                            {% else %}
+                                <i class="fa-solid {{ service.icon }} fa-lg"></i>
+                            {% endif %}
+                        </td>
+                        <td><strong>{{ service.title }}</strong></td>
+                        <td><a href="/admin/service/delete/{{ service.id }}" class="btn-danger" onclick="return confirm('Silmek istiyor musunuz?')">Sil</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2><i class="fa-solid fa-kit-medical"></i> Tedaviler Yönetimi</h2>
+            <form action="/admin/treatment/add" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Tedavi Branşı Adı</label>
+                    <input type="text" name="title" class="form-control" placeholder="Örn: Ortopedik Kırık Cerrahisi" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>FontAwesome İkonu (Resim yoksa aktiftir)</label>
+                        <input type="text" name="icon" class="form-control" value="fa-kit-medical">
+                    </div>
+                    <div class="form-group">
+                        <label>Tedavi Görseli (İsteğe Bağlı)</label>
+                        <input type="file" name="image" accept="image/*" class="form-control" style="padding: 6px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tedavi Detayları / Süreci</label>
+                    <textarea name="description" class="form-control" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="background-color: #34495e;"><i class="fa-solid fa-plus"></i> Tedavi Ekle</button>
+            </form>
+
+            <table class="data-list">
+                <thead>
+                    <tr>
+                        <th>Görsel/İkon</th>
+                        <th>Tedavi Adı</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for treatment in treatments %}
+                    <tr>
+                        <td>
+                            {% if treatment.image %}
+                                <span style="color: green;"><i class="fa-solid fa-image"></i> Görsel Yüklü</span>
+                            {% else %}
+                                <i class="fa-solid {{ treatment.icon }} fa-lg"></i>
+                            {% endif %}
+                        </td>
+                        <td><strong>{{ treatment.title }}</strong></td>
+                        <td><a href="/admin/treatment/delete/{{ treatment.id }}" class="btn-danger" onclick="return confirm('Silmek istiyor musunuz?')">Sil</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Hizmetlerimiz - Sefaköy Vet-Max Veteriner Kliniği{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Klinik Hizmetlerimiz</h1>
+    <p>Sefaköy Vet-Max olarak dostlarımızın yaşam kalitesini artıracak modern teşhis ve tedavi yöntemleri sunuyoruz.</p>
+</section>
+
+<section class="services-section">
+    <div class="services-container">
+        <div class="services-grid">
+
+<!-- Veritabanındaki hizmetleri dinamik olarak çekiyoruz -->
+            {% for service in services %}
+            <div class="service-card {% if loop.first %}highlight{% endif %}">
+
+                <!-- AKILLI KONTROL: Eğer resim yüklenmişse resmi göster, yoksa ikonu göster -->
+                {% if service.image %}
+                <div class="service-uploaded-img">
+                    <img src="{{ url_for('static', filename='images/uploads/' + service.image) }}" alt="{{ service.title }}">
+                </div>
+                {% else %}
+                <div class="service-icon-box">
+                    <i class="fa-solid {{ service.icon }}"></i>
+                </div>
+                {% endif %}
+
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description }}</p>
+                <a href="/iletisim" class="service-link">Detaylı Bilgi <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+{% endblock %}

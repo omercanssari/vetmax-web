@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Tedavilerimiz - Sefaköy Vet-Max Veteriner Kliniği{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Tedavi Branşlarımız</h1>
+    <p>Kliniğimizde modern medikal cihazlar ve uzman cerrahlarımızla uygulanan profesyonel tedavi yöntemleri.</p>
+</section>
+
+<section class="treatments-section">
+    <div class="treatments-container">
+
+        {% for treatment in treatments %}
+        <div class="treatment-row">
+            
+            {% if treatment.image %}
+            <div class="treatment-visual">
+                <img src="{{ url_for('static', filename='images/uploads/' + treatment.image) }}" alt="{{ treatment.title }}">
+            </div>
+            {% else %}
+            <div class="treatment-visual treatment-icon-mode">
+                <i class="fa-solid {{ treatment.icon }}"></i>
+            </div>
+            {% endif %}
+
+            <div class="treatment-text">
+                <span class="treatment-number">0{{ loop.index }}</span>
+                <h3>{{ treatment.title }}</h3>
+                <p>{{ treatment.description }}</p>
+                <a href="/iletisim" class="treatment-btn">Detaylı Bilgi & Randevu <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+
+        </div>
+        {% else %}
+        <p style="text-align: center; font-size: 18px; color: #666;">Henüz eklenmiş bir tedavi bulunmamaktadır.</p>
+        {% endfor %}
+
+    </div>
+</section>
+{% endblock %}

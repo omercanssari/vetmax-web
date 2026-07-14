@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block title %}Hakkımızda - Sefaköy Vet-Max Veteriner Kliniği{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Bizim Hikayemiz & Kadromuz</h1>
+    <p>Sefaköy Vet-Max ailesini, uzman hekimlerimizi ve patili dostlarımıza olan bağlılığımızı yakından tanıyın.</p>
+</section>
+
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-grid">
+
+            <div class="about-image-wrapper">
+                <div class="about-image-bg"></div>
+                <img src="{{ url_for('static', filename='images/catdog.jpg') }}" alt="Vet-Max Kedi ve Köpek Dostlarımız" class="about-main-img">
+            </div>
+
+            <div class="about-text-block">
+                <span class="section-subtitle">Sevgi ve Güvenle</span>
+                <h2>Patili Dostlarınız İçin En İyisi</h2>
+                <p>Sefaköy Vet-Max Veteriner Kliniği olarak, evcil hayvanlarınızın sadece birer canlı değil, ailenizin çok değerli birer ferdi olduğunun bilincindeyiz. Küçükçekmece Kartaltepe bölgesinde, modern tıbbi donanımımız ve şefkatli bakım anlayışımızla kedi, köpek ve diğer evcil dostlarımıza en yüksek standartlarda sağlık hizmeti sunuyoruz.</p>
+                <p>Kliniğimiz, koruyucu hekimlikten acil cerrahi müdahalelere kadar geniş bir yelpazede hizmet vermektedir. Dijital hasta takip sistemlerimiz sayesinde dostlarımızın tüm geçmiş tahlil, aşı ve tedavi süreçlerini eksiksiz takip ediyor, zamanı gelen uygulamaları hasta sahiplerimize anında bildiriyoruz.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="team-section">
+    <div class="team-container">
+        <div class="section-title-center">
+            <span class="section-subtitle">Kadromuz</span>
+            <h2>Uzman Hekimlerimizle Tanışın</h2>
+            <p>Dilsiz dostlarımızın sağlığını emanet ettiğiniz şefkatli ve deneyimli hekimlerimiz.</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=600" alt="Vet. Hekim Ahmet Yılmaz">
+                </div>
+                <div class="team-info">
+                    <h3>Vet. Hekim Ahmet Yılmaz</h3>
+                    <span class="team-role">Kurucu Hekim / Cerrahi & Dahiliye Uzmanı</span>
+                    <p>İstanbul Üniversitesi Veteriner Fakültesi mezunu. 10 yılı aşkın tecrübesiyle özellikle ortopedik cerrahi ve acil travma müdahalelerinde uzmanlaşmıştır.</p>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="https://images.unsplash.com/photo-1594824888806-a28dcfda98b8?q=80&w=600" alt="Vet. Hekim Zeynep Kaya">
+                </div>
+                <div class="team-info">
+                    <h3>Vet. Hekim Zeynep Kaya</h3>
+                    <span class="team-role">Poliklinik & Göz Hastalıkları Uzmanı</span>
+                    <p>Ankara Üniversitesi mezunu. Kliniğimizde özellikle pet göz hastalıkları (oftalmoloji), dahiliye tahlilleri, kedi psikolojisi ve aşı takipleri alanında hizmet vermektedir.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews-section">
+    <div class="reviews-container">
+        <div class="section-title-center">
+            <span class="section-subtitle">Google Haritalar Değerlendirmeleri</span>
+            <h2>Hasta Sahiplerimiz Ne Diyor?</h2>
+            <div class="google-badge">
+                <i class="fa-brands fa-google"></i> <strong>4.6 / 5.0</strong> (570+ Gerçek Hasta Sahibi Yorumu)
+            </div>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Gecenin 3'ünde kedimizin zehirlenme şüphesiyle acil olarak girdik. Nöbetçi hekimin ilgisi, sakinliği ve hızlı müdahalesi sayesinde kızımız şu an çok sağlıklı. Sefaköy'de kesinlikle güvenebileceğiniz en iyi klinik."</p>
+                <div class="review-author">
+                    <div class="author-avatar">M</div>
+                    <div>
+                        <h4>Murat Can B.</h4>
+                        <span>Google Yorumu • 2 hafta önce</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Köpeğim Paşa'nın tüm aşı takvimini ve tıraşını yıllardır Vet-Max'te yaptırıyoruz. Hem hekimler hem de çalışanlar inanılmaz şefkatli. Fiyatlar yapılan profesyonel işleme ve temizliğe göre gayet makul."</p>
+                <div class="review-author">
+                    <div class="author-avatar" style="background-color: #e76f51;">E</div>
+                    <div>
+                        <h4>Elif Nur S.</h4>
+                        <span>Google Yorumu • 1 ay önce</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"Kedimin geçmeyen bir deri problemi vardı, gittiğim başka yerler çözüm bulamadı. Ahmet Bey ve Zeynep Hanım doğru teşhisle kısa sürede tedavi ettiler. Gözü kapalı tavsiye ederim, harika bir ekip."</p>
+                <div class="review-author">
+                    <div class="author-avatar" style="background-color: #2a3a31;">B</div>
+                    <div>
+                        <h4>Burak K.</h4>
+                        <span>Google Yorumu • 3 ay önce</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats-section">
+    <div class="stats-container">
+        <div class="stat-item">
+            <h3>570+</h3>
+            <p>Google Yorumu</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <h3>4.6/5</h3>
+            <p>Google Puanı</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <h3>4.8/5</h3>
+            <p>Yandex Puanı</p>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <h3>7/24</h3>
+            <p>Acil Durum Desteği</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

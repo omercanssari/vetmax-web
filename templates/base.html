@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sefaköy Vet-Max Veteriner Kliniği{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+<!-- Menü (Navbar) İçindeki Logo Kısımını Bulun ve Değiştirin -->
+<div class="nav-container">
+    <!-- ESKİ YAZILI LOGO YERİNE RESİMLİ LOGO -->
+    <a href="/" class="logo">
+        <img src="{{ url_for('static', filename='images/vetmax.png') }}" alt="Sefaköy Vet-Max Veteriner Kliniği" class="logo-img">
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="/">Ana Sayfa</a></li>
+        <li><a href="/hakkimizda">Hakkımızda</a></li>
+        <li><a href="/hizmetlerimiz">Hizmetlerimiz</a></li>
+        <li><a href="/tedavilerimiz">Tedavilerimiz</a></li>
+        <li><a href="/iletisim">İletişim</a></li>
+    </ul>
+    <a href="tel:05309341768" class="nav-cta"><i class="fa-solid fa-phone"></i> Acil Arama</a>
+</div>
+    </nav>
+
+    <main class="main-wrapper">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 Sefaköy Vet-Max Veteriner Kliniği. Tüm Hakları Saklıdır.</p>
+            <p>Kartaltepe Mah. Altan Sok. No: 6A Küçükçekmece / İstanbul</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
